@@ -107,8 +107,8 @@
 
     .reel { border: 2px solid var(--text); background: #000; box-shadow: 8px 8px 0 var(--accent); max-width: 720px; }
     .reel { position: relative; }
-    .reel iframe { display: block; filter: contrast(1.3) url(#pixelate) url(#bwred); }
-    /* 8-bit filter laid over the video: pixel grid, static, black/white/gray/red */
+    .reel iframe { display: block; filter: grayscale(1) brightness(.42) contrast(1.25) url(#pixelate); }
+    /* 8-bit filter laid over the video: pixel grid, static, dimmed black & white */
     .reel::after {
       content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
       background:
@@ -121,6 +121,19 @@
       letter-spacing: .1em; padding: 3px 8px; background: var(--accent); color: #000;
       transition: opacity .3s steps(3);
     }
+    /* retro pixel play button */
+    .play {
+      position: absolute; top: 50%; left: 50%; z-index: 4;
+      width: 96px; height: 96px; margin: -48px 0 0 -48px; padding: 0; cursor: pointer;
+      background: #0a0a0a; border: 3px solid var(--accent); box-shadow: 6px 6px 0 var(--accent);
+      display: grid; place-items: center;
+      transition: transform .12s steps(2), box-shadow .12s steps(2), opacity .3s steps(3);
+    }
+    .play svg { width: 40px; height: 56px; fill: var(--accent); shape-rendering: crispEdges; }
+    .play:hover { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--accent); }
+    .play:hover svg { fill: #fff; }
+    .play:focus-visible { outline: 2px solid #fff; outline-offset: 4px; }
+    .reel.playing .play { opacity: 0; pointer-events: none; }
     /* once the video plays, the filter steps aside */
     .reel.playing::after, .reel.playing::before { opacity: 0; }
     .reel.playing iframe { filter: none; }
@@ -247,6 +260,13 @@
           <h2>Showreel</h2>
           <div class="reel">
             <div style="padding:54.17% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/888430497?autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mariano Lacerna - reel2025"></iframe></div>
+            <button class="play" type="button" aria-label="Play showreel">
+              <svg viewBox="0 0 5 9" aria-hidden="true">
+                <rect x="0" y="0" width="1" height="9"/><rect x="1" y="1" width="1" height="7"/>
+                <rect x="2" y="2" width="1" height="5"/><rect x="3" y="3" width="1" height="3"/>
+                <rect x="4" y="4" width="1" height="1"/>
+              </svg>
+            </button>
           </div>
           <svg width="0" height="0" style="position:absolute" aria-hidden="true">
             <filter id="pixelate" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
@@ -256,14 +276,6 @@
               <feComposite in="SourceGraphic" in2="grid" operator="in"/>
               <feMorphology operator="dilate" radius="4"/>
             </filter>
-            <filter id="bwred" color-interpolation-filters="sRGB">
-              <feColorMatrix type="matrix" values=".33 .33 .33 0 0  .33 .33 .33 0 0  .33 .33 .33 0 0  0 0 0 1 0"/>
-              <feComponentTransfer>
-                <feFuncR type="discrete" tableValues="0 1 .6 1"/>
-                <feFuncG type="discrete" tableValues="0 .23 .6 1"/>
-                <feFuncB type="discrete" tableValues="0 .19 .6 1"/>
-              </feComponentTransfer>
-            </filter>
           </svg>
           <script src="https://player.vimeo.com/api/player.js"></script>
           <script>
@@ -272,6 +284,8 @@
               var frame = reel && reel.querySelector('iframe');
               if (!frame || !window.Vimeo) return;
               var player = new Vimeo.Player(frame);
+              var btn = reel.querySelector('.play');
+              btn.addEventListener('click', function () { player.play(); });
               player.on('play', function () { reel.classList.add('playing'); });
               player.on('pause', function () { reel.classList.remove('playing'); });
               player.on('ended', function () { reel.classList.remove('playing'); });
