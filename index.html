@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mariano Lacerna – VFX Compositor</title>
+  <meta name="description" content="Personal website of Mariano Lacerna, Senior VFX Compositor with 11+ years of experience in feature films, TV shows, commercials and video games.">
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1f2933;
+      --muted: #6b7280;
+      --accent: #2563eb;
+      --line: #e5e7eb;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    header {
+      padding: 80px 0 48px;
+      border-bottom: 1px solid var(--line);
+    }
+    header h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 6vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+    header .tagline {
+      margin: 12px 0 0;
+      font-size: 1.25rem;
+      color: var(--accent);
+      font-weight: 500;
+    }
+    nav {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px solid transparent;
+    }
+    nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+    section { padding: 56px 0 8px; }
+    h2 {
+      margin: 0 0 20px;
+      font-size: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    p { margin: 0 0 16px; }
+    .timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0 0 0 22px;
+      border-left: 2px solid var(--line);
+    }
+    .timeline li {
+      position: relative;
+      padding-bottom: 28px;
+    }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: -29px;
+      top: 9px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+    }
+    .role { font-weight: 600; }
+    .meta { color: var(--muted); font-size: 0.9rem; }
+    .timeline p { margin: 6px 0 0; }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      margin: 0 0 16px;
+      padding: 0;
+    }
+    .skills li {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 2px 14px;
+      font-size: 0.92rem;
+    }
+    footer {
+      margin-top: 48px;
+      padding: 24px 0 48px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <h1>Mariano Lacerna</h1>
+      <p class="tagline">Senior VFX Compositor</p>
+      <nav>
+        <a href="#about">About me</a>
+        <a href="#showreel">Showreel</a>
+        <a href="#career">Career</a>
+        <a href="#skills">Skills &amp; Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="about">
+      <h2>About me</h2>
+      <p>
+        I am an Argentinian-Italian Senior Compositor based in Mendoza with 11+ years of
+        experience in VFX compositing, working with skilled professionals in feature films,
+        TV commercials, cinematic video games and TV shows.
+      </p>
+      <p>
+        At work, I always look for the most effective way to achieve objectives with the
+        available tools, and I enjoy collaborating and helping other team members when needed.
+        I am currently looking for new professional challenges where I can develop my skills
+        together with talented teams doing amazing VFX shots.
+      </p>
+      <p>I love travelling, cooking and movies.</p>
+    </section>
+
+    <section id="showreel">
+      <h2>Showreel</h2>
+      <div style="position:relative;padding-top:56.25%;margin-bottom:12px;">
+        <iframe src="https://player.vimeo.com/video/888430497"
+                style="position:absolute;inset:0;width:100%;height:100%;border:0;"
+                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                title="Mariano Lacerna – VFX Showreel"></iframe>
+      </div>
+      <p><a href="https://vimeo.com/888430497">Watch it on Vimeo →</a></p>
+    </section>
+
+    <section id="career">
+      <h2>Career summary</h2>
+      <ul class="timeline">
+        <li>
+          <div class="role">Senior Compositor · Rojo Studio</div>
+          <div class="meta">Feb 2024 – Present</div>
+          <p>Feature films and TV shows, including (Un)lucky Sisters, Cometierra, The Gringo Hunters and The Messege.</p>
+        </li>
+        <li>
+          <div class="role">Senior Compositor · Framestore</div>
+          <div class="meta">Jul 2023 – Dec 2023</div>
+          <p>Feature film Wolfs.</p>
+        </li>
+        <li>
+          <div class="role">Senior Compositor · MARZ</div>
+          <div class="meta">Sep 2022 – Jul 2023</div>
+          <p>The Creator, 1923, Ant-Man and the Wast, Secret Invation, Beacon 23.</p>
+        </li>
+        <li>
+          <div class="role">Senior Compositor · Pixomondo</div>
+          <div class="meta">Apr 2022 – Aug 2022</div>
+          <p>See, Extrapolations.</p>
+        </li>
+        <li>
+          <div class="role">Compositing Artist · Framestore</div>
+          <div class="meta">Aug 2021 – Apr 2022</div>
+          <p>Slumberland, 1899.</p>
+        </li>
+        <li>
+          <div class="role">On-Set VFX Supervisor · Fabula</div>
+          <div class="meta">Apr 2021 – Jul 2021</div>
+          <p>TV series Señorita 89.</p>
+        </li>
+        <li>
+          <div class="role">Compositing Artist · Rodeo FX, Montreal</div>
+          <div class="meta">Oct 2019 – Oct 2020</div>
+          <p>Bloodshot, The Boys, Jungle Cruise, WandaVision, Chaos Walking, The Falcon and the Winter Soldier.</p>
+        </li>
+        <li>
+          <div class="role">Compositing Artist · MPC Film, Montreal</div>
+          <div class="meta">Aug 2018 – Oct 2019</div>
+          <p>Godzilla, King of the Monsters, Dumbo, Aquaman, The one and the only Ivan, Doolitle.</p>
+        </li>
+        <li>
+          <div class="role">Lead Compositor · Whiskey Films Co</div>
+          <div class="meta">May 2016 – Jul 2018</div>
+          <p>High-end TV commercials and TV series.</p>
+        </li>
+        <li>
+          <div class="role">Earlier career · 2012 – 2016</div>
+          <div class="meta">Oner VFX · Varsovia Films / Millecento / MiraCine · LASP/NonStop · Gizmo · Nomad VFX</div>
+          <p>
+            Started as a Junior Compositor at Nomad VFX and grew into Senior roles on feature films
+            such as Hands of Stones, Ola Bola and The Mirror of the Others, plus the cinematic
+            video game Elite: Dangerous.
+          </p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills &amp; Education</h2>
+      <p><strong>Software</strong></p>
+      <ul class="skills">
+        <li>NukeX</li>
+        <li>Nuke Studio</li>
+        <li>After Effects</li>
+        <li>Mocha Pro</li>
+        <li>PFTrack</li>
+        <li>Linux</li>
+      </ul>
+      <p><strong>Languages:</strong> Spanish, English</p>
+      <p><strong>Education:</strong> Bachelor's degree in Filmmaking, ENERC (2009–2012)</p>
+    </section>
+
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      © 2026 Mariano Lacerna ·
+      <a href="mailto:marianolaxerna@gmail.com">marianolaxerna@gmail.com</a> ·
+      <a href="https://www.linkedin.com/in/marianolacerna">LinkedIn</a> ·
+      <a href="https://www.imdb.com/name/nm5569918/">IMDb</a>
+    </div>
+  </footer>
+
+</body>
+</html>
