@@ -107,14 +107,14 @@
 
     .reel { border: 2px solid var(--text); background: #000; box-shadow: 8px 8px 0 var(--accent); max-width: 720px; }
     .reel { position: relative; }
-    .reel iframe { display: block; filter: url(#posterize) contrast(1.15) saturate(1.2); transition: filter .3s steps(3); }
+    .reel iframe { display: block; filter: url(#pixelate) url(#posterize) contrast(1.25) saturate(1.4); transition: filter .3s steps(3); }
     /* 8-bit filter laid over the video: pixel grid + scanlines + color tint */
     .reel::after {
       content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
       background:
-        linear-gradient(rgba(0,0,0,.45) 1px, transparent 1px) 0 0 / 100% 4px,
-        linear-gradient(90deg, rgba(0,0,0,.45) 1px, transparent 1px) 0 0 / 4px 100%,
-        linear-gradient(rgba(255,59,48,.14), rgba(0,40,255,.12));
+        linear-gradient(rgba(0,0,0,.6) 2px, transparent 2px) 0 0 / 100% 8px,
+        linear-gradient(90deg, rgba(0,0,0,.6) 2px, transparent 2px) 0 0 / 8px 100%,
+        linear-gradient(rgba(255,59,48,.22), rgba(0,40,255,.2));
       mix-blend-mode: multiply;
       transition: opacity .3s steps(3);
     }
@@ -252,11 +252,18 @@
             <div style="padding:54.17% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/888430497?autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mariano Lacerna - reel2025"></iframe></div>
           </div>
           <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+            <filter id="pixelate" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+              <feFlood x="4" y="4" width="1" height="1"/>
+              <feComposite width="8" height="8"/>
+              <feTile result="grid"/>
+              <feComposite in="SourceGraphic" in2="grid" operator="in"/>
+              <feMorphology operator="dilate" radius="4"/>
+            </filter>
             <filter id="posterize" color-interpolation-filters="sRGB">
               <feComponentTransfer>
-                <feFuncR type="discrete" tableValues="0 .25 .5 .75 1"/>
-                <feFuncG type="discrete" tableValues="0 .25 .5 .75 1"/>
-                <feFuncB type="discrete" tableValues="0 .25 .5 .75 1"/>
+                <feFuncR type="discrete" tableValues="0 .34 .67 1"/>
+                <feFuncG type="discrete" tableValues="0 .34 .67 1"/>
+                <feFuncB type="discrete" tableValues="0 .34 .67 1"/>
               </feComponentTransfer>
             </filter>
           </svg>
