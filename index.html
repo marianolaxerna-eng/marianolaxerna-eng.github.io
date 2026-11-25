@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mariano Lacerna – VFX Compositor</title>
   <meta name="description" content="Personal website of Mariano Lacerna, Senior VFX Compositor with 11+ years of experience in feature films, TV shows, commercials and video games.">
-  <meta name="theme-color" content="#0a0a0a">
+  <meta name="theme-color" content="#0b0b0b">
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
@@ -13,17 +14,34 @@
     :root {
       --bg: #0b0b0b;
       --text: #ece9e4;
+      --text-2: #cfccc6;
+      --text-3: #bdbab4;
       --muted: #8d8a85;
       --line: #242321;
+      --border: #3a3835;
       --accent: #b4463f;      /* desaturated red */
       --ok: #3fbf6a;
       --gutter: clamp(20px, 4vw, 72px);
       --serif: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
       --sans: "Jost", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
     }
+    /* light mode: inverted palette */
+    [data-theme="light"] {
+      --bg: #ece9e4;
+      --text: #0b0b0b;
+      --text-2: #2a2927;
+      --text-3: #4a4844;
+      --muted: #6f6c67;
+      --line: #cfcbc4;
+      --border: #b9b5ae;
+      --accent: #a63d36;
+      color-scheme: light;
+    }
+    [data-theme="light"] body::after { filter: invert(1); }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; font-size: clamp(16px, .55vw + 9.4px, 22px); }
     body {
+      transition: background-color .3s, color .3s;
       margin: 0; background: var(--bg); color: var(--text);
       font-family: var(--serif); font-size: 1.2rem; line-height: 1.55;
       -webkit-font-smoothing: antialiased;
@@ -39,13 +57,23 @@
     .container { width: 100%; padding: 0 var(--gutter); }
 
     /* ---------- top bar ---------- */
-    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(11,11,11,.88); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+    .topbar { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
     .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 56px; }
     .logo { font-family: var(--serif); font-size: 1.7rem; text-decoration: none; line-height: 1; }
     .logo span { color: var(--accent); font-style: italic; }
     nav { display: flex; flex-wrap: wrap; gap: 4px 28px; }
     nav a { font-family: var(--sans); font-size: .72rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); text-decoration: none; padding: 4px 0; transition: color .2s; }
     nav a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .theme-toggle {
+      font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .22em;
+      color: var(--text); background: transparent; border: 1px solid var(--border);
+      padding: 7px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+      transition: border-color .2s, background .2s, color .2s;
+    }
+    .theme-toggle:hover { border-color: var(--text); }
+    .theme-toggle i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--text); background: var(--text); display: inline-block; }
+    [data-theme="light"] .theme-toggle i { background: transparent; }
 
     /* ---------- hero ---------- */
     .hero { padding: clamp(40px, 6vw, 80px) 0 clamp(32px, 4vw, 56px); border-bottom: 1px solid var(--line); text-align: left; }
@@ -65,15 +93,15 @@
     .label b { color: var(--accent); font-weight: 500; margin-right: 10px; }
     h2 { margin: 0 0 28px; font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 5.4vw, 4.6rem); line-height: 1; letter-spacing: -.01em; }
     p { margin: 0 0 16px; max-width: 58ch; }
-    #about p { color: #cfccc6; font-size: 1.3rem; max-width: none; }
+    #about p { color: var(--text-2); font-size: 1.3rem; max-width: none; }
 
     /* ---------- showreel ---------- */
-    .reel { position: relative; border: 1px solid #3a3835; background: #000; width: 75%; max-width: 960px; margin: 0 auto; }
+    .reel { position: relative; border: 1px solid var(--border); background: #000; width: 75%; max-width: 960px; margin: 0 auto; }
     .reel iframe { display: block; filter: grayscale(1) brightness(.6) contrast(1.15); transition: filter .3s ease; }
     .play {
       position: absolute; top: 50%; left: 50%; z-index: 4;
       width: 92px; height: 92px; margin: -58px 0 0 -46px; padding: 0; cursor: pointer;
-      background: rgba(11,11,11,.35); border: 1px solid var(--text); border-radius: 50%;
+      background: color-mix(in srgb, var(--bg) 35%, transparent); border: 1px solid var(--text); border-radius: 50%;
       display: grid; place-items: center; color: var(--text);
       transition: background .25s, border-color .25s, transform .25s, opacity .3s;
     }
@@ -84,6 +112,7 @@
     }
     .play:hover { background: var(--accent); border-color: var(--accent); transform: scale(1.06); }
     .play:hover svg { fill: #fff; }
+    .play:hover::after { color: var(--text); }
     .play:focus-visible { outline: 1px solid #fff; outline-offset: 6px; }
     .reel.playing .play { opacity: 0; pointer-events: none; }
     .reel.playing iframe { filter: none; }
@@ -96,13 +125,13 @@
     .role::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: transparent; border: 1px solid var(--accent); margin-right: 12px; vertical-align: .2em; }
     .timeline li:hover .role::before { background: var(--accent); }
     .co { font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .2em; color: var(--muted); margin-top: 6px; }
-    .timeline p { margin: 10px 0 0; font-size: 1.12rem; color: #bdbab4; max-width: 60ch; line-height: 1.4; }
+    .timeline p { margin: 10px 0 0; font-size: 1.12rem; color: var(--text-3); max-width: 60ch; line-height: 1.4; }
     #career h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); }
 
     /* ---------- skills ---------- */
     .sub { font-family: var(--sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); margin: 0 0 14px; }
     .skills { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0 0 30px; padding: 0; }
-    .skills li { font-family: var(--sans); font-size: .72rem; text-transform: uppercase; letter-spacing: .18em; padding: 9px 16px; border: 1px solid #3a3835; }
+    .skills li { font-family: var(--sans); font-size: .72rem; text-transform: uppercase; letter-spacing: .18em; padding: 9px 16px; border: 1px solid var(--border); }
     .facts { font-size: 1.2rem; }
     .facts strong { font-family: var(--sans); font-weight: 400; color: var(--muted); font-size: .68rem; text-transform: uppercase; letter-spacing: .22em; margin-right: 14px; }
 
@@ -117,7 +146,7 @@
     .links a:hover { color: var(--accent); padding-left: 10px; }
     .links a:hover span { transform: translateX(6px); }
     .portrait { display: flex; align-items: center; gap: 24px; margin: 0 0 40px; }
-    .portrait .pic { width: clamp(120px, 14vw, 200px); aspect-ratio: 1; flex: none; overflow: hidden; border-radius: 50%; border: 1px solid #3a3835; background: #000; }
+    .portrait .pic { width: clamp(120px, 14vw, 200px); aspect-ratio: 1; flex: none; overflow: hidden; border-radius: 50%; border: 1px solid var(--border); background: #000; }
     .portrait img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 35%; filter: grayscale(1) contrast(1.05); }
     .portrait figcaption { font-family: var(--sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); line-height: 2; }
     .portrait figcaption b { display: block; color: var(--text); font-weight: 500; font-size: .8rem; }
@@ -144,6 +173,7 @@
       .timeline li { grid-template-columns: 1fr; gap: 4px; }
       .topbar .container { padding-top: 8px; padding-bottom: 8px; flex-direction: column; align-items: flex-start; gap: 4px; }
       nav { gap: 4px 18px; }
+      .nav-right { gap: 8px 18px; }
     }
   </style>
 </head>
@@ -152,13 +182,16 @@
   <div class="topbar">
     <div class="container">
       <a class="logo" href="#top">ML<span>_</span></a>
-      <nav aria-label="Main">
-        <a href="#about">About</a>
-        <a href="#career">Career</a>
-        <a href="#showreel">Showreel</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <div class="nav-right">
+        <nav aria-label="Main">
+          <a href="#about">About</a>
+          <a href="#career">Career</a>
+          <a href="#showreel">Showreel</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode"><i></i><span>Light</span></button>
+      </div>
     </div>
   </div>
 
@@ -350,5 +383,25 @@
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      function apply(theme) {
+        root.setAttribute('data-theme', theme);
+        var light = theme === 'light';
+        btn.querySelector('span').textContent = light ? 'Dark' : 'Light';
+        btn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+        if (meta) meta.setAttribute('content', light ? '#ece9e4' : '#0b0b0b');
+      }
+      apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        apply(next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+      });
+    })();
+  </script>
 </body>
 </html>
