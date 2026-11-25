@@ -5,254 +5,348 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Mariano Lacerna – VFX Compositor</title>
   <meta name="description" content="Personal website of Mariano Lacerna, Senior VFX Compositor with 11+ years of experience in feature films, TV shows, commercials and video games.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700;900&family=Space+Grotesk:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #1f2933;
-      --muted: #6b7280;
-      --accent: #2563eb;
-      --line: #e5e7eb;
+      --bg: #0a0a0a;
+      --text: #f2f2f2;
+      --muted: #8a8a8a;
+      --line: #222222;
+      --accent: #ff3b30;
+      --font-dot: "Doto", "Space Mono", ui-monospace, monospace;
+      --font-sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      --font-mono: "Space Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--bg);
+      background-color: var(--bg);
+      background-image: radial-gradient(#1c1c1c 1px, transparent 1px);
+      background-size: 20px 20px;
       color: var(--text);
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: var(--font-sans);
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
     }
-    .container {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    header {
-      padding: 80px 0 48px;
+    ::selection { background: var(--accent); color: #000; }
+    a { color: inherit; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+    /* ---------- top bar ---------- */
+    .topbar {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(10,10,10,.85);
+      backdrop-filter: blur(6px);
       border-bottom: 1px solid var(--line);
     }
-    header h1 {
-      margin: 0;
-      font-size: clamp(2.2rem, 6vw, 3.2rem);
-      line-height: 1.15;
-      letter-spacing: -0.02em;
+    .topbar .container {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; min-height: 52px;
     }
-    header .tagline {
-      margin: 12px 0 0;
-      font-size: 1.25rem;
-      color: var(--accent);
-      font-weight: 500;
-    }
-    nav {
-      margin-top: 28px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
+    .logo { font-family: var(--font-dot); font-weight: 900; font-size: 1.3rem; text-decoration: none; letter-spacing: .02em; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; flex-wrap: wrap; gap: 4px 20px; }
     nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 0.95rem;
-      border-bottom: 1px solid transparent;
+      font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--muted); text-decoration: none; padding: 4px 0;
     }
-    nav a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-    section { padding: 56px 0 8px; }
+    nav a:hover { color: var(--accent); }
+
+    /* ---------- hero ---------- */
+    .hero { padding: 96px 0 72px; border-bottom: 1px solid var(--line); }
+    .status {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--muted); margin-bottom: 28px;
+    }
+    .status i { width: 8px; height: 8px; background: var(--accent); display: inline-block; animation: blink 1.4s steps(2) infinite; }
+    .hero h1 {
+      margin: 0; font-family: var(--font-dot); font-weight: 900;
+      font-size: clamp(3rem, 12vw, 7.5rem); line-height: .95; letter-spacing: -.01em;
+    }
+    .tagline {
+      margin: 24px 0 0; font-family: var(--font-mono);
+      font-size: clamp(1rem, 2.4vw, 1.3rem); color: var(--accent);
+    }
+    .tagline::after { content: "_"; margin-left: 2px; animation: blink 1s steps(2) infinite; }
+    .hero-meta {
+      margin-top: 40px; display: flex; flex-wrap: wrap; gap: 8px 32px;
+      font-family: var(--font-mono); font-size: .8rem; color: var(--muted);
+    }
+
+    /* ---------- sections ---------- */
+    section { padding: 72px 0 8px; }
+    .row { display: grid; grid-template-columns: 200px 1fr; gap: 24px 48px; }
+    .label {
+      font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--muted); padding-top: 6px;
+    }
+    .label b { color: var(--accent); font-weight: 700; margin-right: 6px; }
     h2 {
-      margin: 0 0 20px;
-      font-size: 1.5rem;
-      letter-spacing: -0.01em;
+      margin: 0 0 24px; font-family: var(--font-dot); font-weight: 700;
+      font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1;
     }
-    p { margin: 0 0 16px; }
-    .timeline {
-      list-style: none;
-      margin: 0;
-      padding: 0 0 0 22px;
-      border-left: 2px solid var(--line);
+    p { margin: 0 0 16px; max-width: 62ch; }
+    #about p { color: #cfcfcf; }
+
+    /* ---------- pixel button ---------- */
+    .btn {
+      display: inline-block; font-family: var(--font-mono); font-size: .85rem;
+      text-transform: uppercase; letter-spacing: .08em; text-decoration: none;
+      padding: 14px 22px; border: 2px solid var(--text); background: var(--bg);
+      box-shadow: 6px 6px 0 var(--accent);
+      transition: transform .12s steps(2), box-shadow .12s steps(2);
     }
+    .btn:hover { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--accent); }
+
+    /* ---------- career ---------- */
+    .timeline { list-style: none; margin: 0; padding: 0; }
     .timeline li {
-      position: relative;
-      padding-bottom: 28px;
+      display: grid; grid-template-columns: 150px 1fr; gap: 8px 24px;
+      padding: 20px 0; border-top: 1px solid var(--line);
     }
-    .timeline li::before {
-      content: "";
-      position: absolute;
-      left: -29px;
-      top: 9px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--accent);
+    .timeline li:last-child { border-bottom: 1px solid var(--line); }
+    .timeline li:hover .role::before { background: var(--accent); }
+    .date { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); padding-top: 3px; }
+    .role { font-weight: 500; font-size: 1.05rem; }
+    .role::before {
+      content: ""; display: inline-block; width: 8px; height: 8px;
+      background: transparent; border: 2px solid var(--accent); margin-right: 10px;
     }
-    .role { font-weight: 600; }
-    .meta { color: var(--muted); font-size: 0.9rem; }
-    .timeline p { margin: 6px 0 0; }
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      list-style: none;
-      margin: 0 0 16px;
-      padding: 0;
-    }
+    .co { font-family: var(--font-mono); font-size: .85rem; color: var(--muted); margin-top: 2px; }
+    .timeline p { margin: 8px 0 0; font-size: .95rem; color: #bdbdbd; }
+
+    /* ---------- skills ---------- */
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0 0 28px; padding: 0; }
     .skills li {
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 2px 14px;
-      font-size: 0.92rem;
+      font-family: var(--font-mono); font-size: .82rem; padding: 6px 14px;
+      border: 1px solid #3a3a3a; background: #0f0f0f;
+      box-shadow: 3px 3px 0 #222;
     }
-    footer {
-      margin-top: 48px;
-      padding: 24px 0 48px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 0.9rem;
+    .sub { font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0 0 12px; }
+    .facts { font-size: .98rem; }
+    .facts strong { font-family: var(--font-mono); font-weight: 400; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; margin-right: 8px; }
+
+    /* ---------- footer ---------- */
+    footer { margin-top: 80px; border-top: 1px solid var(--line); padding: 64px 0 40px; }
+    .contact-title { font-family: var(--font-dot); font-weight: 900; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.05; margin: 0 0 32px; }
+    .links { display: flex; flex-direction: column; margin-bottom: 56px; }
+    .links a {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 0; border-top: 1px solid var(--line);
+      font-size: clamp(1rem, 2.6vw, 1.4rem); text-decoration: none;
     }
-    footer a { color: var(--accent); text-decoration: none; }
+    .links a:last-child { border-bottom: 1px solid var(--line); }
+    .links a span { font-family: var(--font-mono); color: var(--accent); transition: transform .12s steps(2); }
+    .links a:hover { color: var(--accent); }
+    .links a:hover span { transform: translateX(6px); }
+    .copy { font-family: var(--font-mono); font-size: .75rem; color: var(--muted); }
+
+    /* ---------- motion ---------- */
+    @keyframes blink { 50% { opacity: 0; } }
+    @keyframes reveal { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    .hero .container > * { animation: reveal .5s steps(6) both; }
+    .hero .container > *:nth-child(2) { animation-delay: .1s; }
+    .hero .container > *:nth-child(3) { animation-delay: .2s; }
+    .hero .container > *:nth-child(4) { animation-delay: .3s; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 720px) {
+      .row { grid-template-columns: 1fr; gap: 8px; }
+      .timeline li { grid-template-columns: 1fr; gap: 4px; }
+      .hero { padding: 64px 0 48px; }
+      .topbar .container { padding-top: 8px; padding-bottom: 8px; flex-direction: column; align-items: flex-start; gap: 4px; }
+    }
   </style>
 </head>
 <body>
 
-  <header>
+  <div class="topbar">
     <div class="container">
-      <h1>Mariano Lacerna</h1>
-      <p class="tagline">Senior VFX Compositor</p>
-      <nav>
-        <a href="#about">About me</a>
+      <a class="logo" href="#top">ML<span>_</span></a>
+      <nav aria-label="Main">
+        <a href="#about">About</a>
         <a href="#showreel">Showreel</a>
         <a href="#career">Career</a>
-        <a href="#skills">Skills &amp; Education</a>
+        <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="status"><i></i> Open to new challenges</div>
+      <h1>Mariano<br>Lacerna</h1>
+      <p class="tagline">Senior VFX Compositor</p>
+      <div class="hero-meta">
+        <span>Mendoza, AR</span>
+        <span>11+ years</span>
+        <span>Film · TV · Commercials · Games</span>
+      </div>
     </div>
   </header>
 
   <main class="container">
 
     <section id="about">
-      <h2>About me</h2>
-      <p>
-        I am an Argentinian-Italian Senior Compositor based in Mendoza with 11+ years of
-        experience in VFX compositing, working with skilled professionals in feature films,
-        TV commercials, cinematic video games and TV shows.
-      </p>
-      <p>
-        At work, I always look for the most effective way to achieve objectives with the
-        available tools, and I enjoy collaborating and helping other team members when needed.
-        I am currently looking for new professional challenges where I can develop my skills
-        together with talented teams doing amazing VFX shots.
-      </p>
-      <p>I love travelling, cooking and movies.</p>
+      <div class="row">
+        <div class="label"><b>01</b>About</div>
+        <div>
+          <h2>About me</h2>
+          <p>
+            I am an Argentinian-Italian Senior Compositor based in Mendoza with 11+ years of
+            experience in VFX compositing, working with skilled professionals in feature films,
+            TV commercials, cinematic video games and TV shows.
+          </p>
+          <p>
+            At work, I always look for the most effective way to achieve objectives with the
+            available tools, and I enjoy collaborating and helping other team members when needed.
+            I am currently looking for new professional challenges where I can develop my skills
+            together with talented teams doing amazing VFX shots.
+          </p>
+          <p>I love travelling, cooking and movies.</p>
+        </div>
+      </div>
     </section>
 
     <section id="showreel">
-      <h2>Showreel</h2>
-      <!-- EDIT: replace the href below with the link to your latest showreel (YouTube / Vimeo) -->
-      <p><a href="https://vimeo.com/YOUR-SHOWREEL-LINK">Watch my latest showreel →</a></p>
+      <div class="row">
+        <div class="label"><b>02</b>Showreel</div>
+        <div>
+          <h2>Showreel</h2>
+          <!-- EDIT: replace the href below with the link to your latest showreel (YouTube / Vimeo) -->
+          <a class="btn" href="https://vimeo.com/YOUR-SHOWREEL-LINK">▶ Watch latest reel</a>
+        </div>
+      </div>
     </section>
 
     <section id="career">
-      <h2>Career summary</h2>
-      <ul class="timeline">
-        <li>
-          <div class="role">Senior Compositor · Wanka Cine</div>
-          <div class="meta">Nov 2026 – Present</div>
-        </li>
-        <li>
-          <div class="role">Senior Compositor · Ollin VFX</div>
-          <div class="meta">Jul 2026 – Oct 2026</div>
-          <p>Feature film The Further Mis-Adventures of Cliff Booth (2026).</p>
-        </li>
-        <li>
-          <div class="role">Senior Compositor · Wanka Cine</div>
-          <div class="meta">Mar 2026 – Jun 2026</div>
-          <p>TV series Moria (2026).</p>
-        </li>
-        <li>
-          <div class="role">Senior Compositor · Freelance</div>
-          <div class="meta">Jul 2025 – Mar 2026</div>
-          <p>Feature films including Pacífico (2026), México 86 (2026) and Pepita la Pistolera (2026).</p>
-        </li>
-        <li>
-          <div class="role">Senior Compositor · Rojo Studio</div>
-          <div class="meta">Feb 2024 – Jun 2025</div>
-          <p>Feature films and TV shows, including (Un)lucky Sisters, Cometierra, The Gringo Hunters and The Messege.</p>
-        </li>
-        <li>
-          <div class="role">Senior Compositor · Framestore</div>
-          <div class="meta">Jul 2023 – Dec 2023</div>
-          <p>Feature film Wolfs.</p>
-        </li>
-        <li>
-          <div class="role">Senior Compositor · MARZ</div>
-          <div class="meta">Sep 2022 – Jul 2023</div>
-          <p>The Creator, 1923, Ant-Man and the Wast, Secret Invation, Beacon 23.</p>
-        </li>
-        <li>
-          <div class="role">Senior Compositor · Pixomondo</div>
-          <div class="meta">Apr 2022 – Aug 2022</div>
-          <p>See, Extrapolations.</p>
-        </li>
-        <li>
-          <div class="role">Compositing Artist · Framestore</div>
-          <div class="meta">Aug 2021 – Apr 2022</div>
-          <p>Slumberland, 1899.</p>
-        </li>
-        <li>
-          <div class="role">On-Set VFX Supervisor · Fabula</div>
-          <div class="meta">Apr 2021 – Jul 2021</div>
-          <p>TV series Señorita 89.</p>
-        </li>
-        <li>
-          <div class="role">Compositing Artist · Rodeo FX, Montreal</div>
-          <div class="meta">Oct 2019 – Oct 2020</div>
-          <p>Bloodshot, The Boys, Jungle Cruise, WandaVision, Chaos Walking, The Falcon and the Winter Soldier.</p>
-        </li>
-        <li>
-          <div class="role">Compositing Artist · MPC Film, Montreal</div>
-          <div class="meta">Aug 2018 – Oct 2019</div>
-          <p>Godzilla, King of the Monsters, Dumbo, Aquaman, The one and the only Ivan, Doolitle.</p>
-        </li>
-        <li>
-          <div class="role">Lead Compositor · Whiskey Films Co</div>
-          <div class="meta">May 2016 – Jul 2018</div>
-          <p>High-end TV commercials and TV series.</p>
-        </li>
-        <li>
-          <div class="role">Earlier career · 2012 – 2016</div>
-          <div class="meta">Oner VFX · Varsovia Films / Millecento / MiraCine · LASP/NonStop · Gizmo · Nomad VFX</div>
-          <p>
-            Started as a Junior Compositor at Nomad VFX and grew into Senior roles on feature films
-            such as Hands of Stones, Ola Bola and The Mirror of the Others, plus the cinematic
-            video game Elite: Dangerous.
-          </p>
-        </li>
-      </ul>
+      <div class="row">
+        <div class="label"><b>03</b>Career</div>
+        <div>
+          <h2>Career summary</h2>
+          <ul class="timeline">
+            <li>
+              <div class="date">Nov 2026 – Present</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Wanka Cine</div></div>
+            </li>
+            <li>
+              <div class="date">Jul 2026 – Oct 2026</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Ollin VFX</div>
+              <p>Feature film The Further Mis-Adventures of Cliff Booth (2026).</p></div>
+            </li>
+            <li>
+              <div class="date">Mar 2026 – Jun 2026</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Wanka Cine</div>
+              <p>TV series Moria (2026).</p></div>
+            </li>
+            <li>
+              <div class="date">Jul 2025 – Mar 2026</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Freelance</div>
+              <p>Feature films including Pacífico (2026), México 86 (2026) and Pepita la Pistolera (2026).</p></div>
+            </li>
+            <li>
+              <div class="date">Feb 2024 – Jun 2025</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Rojo Studio</div>
+              <p>Feature films and TV shows, including (Un)lucky Sisters, Cometierra, The Gringo Hunters and The Message.</p></div>
+            </li>
+            <li>
+              <div class="date">Jul 2023 – Dec 2023</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Framestore</div>
+              <p>Feature film Wolfs.</p></div>
+            </li>
+            <li>
+              <div class="date">Sep 2022 – Jul 2023</div>
+              <div><div class="role">Senior Compositor</div><div class="co">MARZ</div>
+              <p>The Creator, 1923, Ant-Man and the Wasp, Secret Invasion, Beacon 23.</p></div>
+            </li>
+            <li>
+              <div class="date">Apr 2022 – Aug 2022</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Pixomondo</div>
+              <p>See, Extrapolations.</p></div>
+            </li>
+            <li>
+              <div class="date">Aug 2021 – Apr 2022</div>
+              <div><div class="role">Compositing Artist</div><div class="co">Framestore</div>
+              <p>Slumberland, 1899.</p></div>
+            </li>
+            <li>
+              <div class="date">Apr 2021 – Jul 2021</div>
+              <div><div class="role">On-Set VFX Supervisor</div><div class="co">Fabula</div>
+              <p>TV series Señorita 89.</p></div>
+            </li>
+            <li>
+              <div class="date">Oct 2019 – Oct 2020</div>
+              <div><div class="role">Compositing Artist</div><div class="co">Rodeo FX, Montreal</div>
+              <p>Bloodshot, The Boys, Jungle Cruise, WandaVision, Chaos Walking, The Falcon and the Winter Soldier.</p></div>
+            </li>
+            <li>
+              <div class="date">Aug 2018 – Oct 2019</div>
+              <div><div class="role">Compositing Artist</div><div class="co">MPC Film, Montreal</div>
+              <p>Godzilla, King of the Monsters, Dumbo, Aquaman, The one and the only Ivan, Dolittle.</p></div>
+            </li>
+            <li>
+              <div class="date">May 2016 – Jul 2018</div>
+              <div><div class="role">Lead Compositor</div><div class="co">Whiskey Films Co</div>
+              <p>High-end TV commercials and TV series.</p></div>
+            </li>
+            <li>
+              <div class="date">2012 – 2016</div>
+              <div><div class="role">Earlier career</div>
+              <div class="co">Oner VFX · Varsovia Films / Millecento / MiraCine · LASP/NonStop · Gizmo · Nomad VFX</div>
+              <p>
+                Started as a Junior Compositor at Nomad VFX and grew into Senior roles on feature films
+                such as Hands of Stones, Ola Bola and The Mirror of the Others, plus the cinematic
+                video game Elite: Dangerous.
+              </p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section id="skills">
-      <h2>Skills &amp; Education</h2>
-      <p><strong>Software</strong></p>
-      <ul class="skills">
-        <li>NukeX</li>
-        <li>Nuke Studio</li>
-        <li>After Effects</li>
-        <li>Mocha Pro</li>
-        <li>PFTrack</li>
-        <li>Linux</li>
-      </ul>
-      <p><strong>Languages:</strong> Spanish, English</p>
-      <p><strong>Education:</strong> Bachelor's degree in Filmmaking, ENERC (2009–2012)</p>
+      <div class="row">
+        <div class="label"><b>04</b>Skills</div>
+        <div>
+          <h2>Skills &amp; Education</h2>
+          <p class="sub">Software</p>
+          <ul class="skills">
+            <li>NukeX</li>
+            <li>Nuke Studio</li>
+            <li>After Effects</li>
+            <li>Mocha Pro</li>
+            <li>PFTrack</li>
+            <li>Linux</li>
+          </ul>
+          <p class="facts"><strong>Languages</strong>Spanish, English</p>
+          <p class="facts"><strong>Education</strong>Bachelor's degree in Filmmaking, ENERC (2009–2012)</p>
+        </div>
+      </div>
     </section>
 
   </main>
 
   <footer id="contact">
     <div class="container">
-      © 2026 Mariano Lacerna ·
-      <a href="mailto:marianolaxerna@gmail.com">marianolaxerna@gmail.com</a> ·
-      <a href="https://www.linkedin.com/in/marianolacerna">LinkedIn</a> ·
-      <a href="https://www.imdb.com/name/nm5569918/">IMDb</a>
+      <h2 class="contact-title">Let's make<br>something great.</h2>
+      <div class="links">
+        <a href="mailto:marianolaxerna@gmail.com">marianolaxerna@gmail.com <span>→</span></a>
+        <a href="https://www.linkedin.com/in/marianolacerna">LinkedIn <span>→</span></a>
+        <a href="https://www.imdb.com/name/nm5569918/">IMDb <span>→</span></a>
+      </div>
+      <div class="copy">© 2026 Mariano Lacerna · Mendoza, AR</div>
     </div>
   </footer>
 
