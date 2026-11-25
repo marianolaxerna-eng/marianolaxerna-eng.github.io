@@ -111,7 +111,7 @@
     }
     .btn:hover { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--accent); }
 
-    .reel { border: 2px solid var(--text); background: #000; box-shadow: 8px 8px 0 var(--accent); max-width: 1280px; }
+    .reel { border: 2px solid var(--text); background: #000; box-shadow: 8px 8px 0 var(--accent); width: 75%; max-width: 960px; margin: 0 auto; }
     .reel { position: relative; }
     .reel iframe { display: block; filter: grayscale(1) brightness(.6) contrast(1.15); transition: filter .3s steps(3); }
     /* retro pixel play button */
@@ -131,12 +131,11 @@
     .reel.playing iframe { filter: none; }
 
     /* ---------- career ---------- */
-    .timeline { list-style: none; margin: 0; padding: 0; }
+    .timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 5vw, 96px); border-bottom: 1px solid var(--line); }
     .timeline li {
-      display: grid; grid-template-columns: clamp(150px, 14vw, 240px) minmax(0, 1fr); gap: 8px 24px;
-      padding: 26px 0; border-top: 1px solid var(--line);
+      display: grid; grid-template-columns: clamp(150px, 11vw, 190px) minmax(0, 1fr); gap: 8px 20px;
+      padding: 22px 0; border-top: 1px solid var(--line);
     }
-    .timeline li:last-child { border-bottom: 1px solid var(--line); }
     .timeline li:hover .role::before { background: var(--accent); }
     .date { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); padding-top: 3px; }
     .role { font-weight: 500; font-size: 1.3rem; }
@@ -198,6 +197,10 @@
     .portrait figcaption b { display: block; color: var(--text); font-weight: 700; font-size: .95rem; }
 
     /* ---------- responsive ---------- */
+    @media (max-width: 1000px) {
+      .timeline { grid-template-columns: minmax(0, 1fr); }
+      .reel { width: 100%; }
+    }
     @media (max-width: 720px) {
       .timeline li { grid-template-columns: 1fr; gap: 4px; }
       .hero { padding: 64px 0 48px; }
@@ -387,6 +390,7 @@
             <li>Mocha Pro</li>
             <li>PFTrack</li>
             <li>Linux</li>
+            <li>Claude Code</li>
           </ul>
           <p class="facts"><strong>Languages</strong>Spanish, English</p>
           <p class="facts"><strong>Education</strong>Bachelor's degree in Filmmaking, ENERC (2009–2012)</p>
