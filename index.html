@@ -48,13 +48,13 @@
     nav a:hover { color: var(--text); }
 
     /* ---------- hero ---------- */
-    .hero { padding: clamp(64px, 11vw, 150px) 0 clamp(56px, 8vw, 110px); border-bottom: 1px solid var(--line); text-align: center; }
+    .hero { padding: clamp(64px, 11vw, 150px) 0 clamp(56px, 8vw, 110px); border-bottom: 1px solid var(--line); text-align: left; }
     .status { display: inline-flex; align-items: center; gap: 12px; font-family: var(--sans); font-size: .72rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); margin-bottom: 36px; }
     .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); animation: blink 1.6s ease-in-out infinite; }
-    .hero h1 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(3.6rem, 13vw, 12rem); line-height: .9; letter-spacing: -.02em; }
+    .hero h1 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(2.7rem, 9.75vw, 9rem); line-height: .9; letter-spacing: -.02em; }
     .hero h1 em { display: block; font-style: italic; color: var(--accent); }
-    .tagline { margin: 36px auto 0; max-width: none; font-family: var(--sans); font-size: .8rem; text-transform: uppercase; letter-spacing: .3em; color: var(--text); }
-    .hero-meta { margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 28px; font-family: var(--sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); }
+    .tagline { margin: 36px 0 0; max-width: none; font-family: var(--sans); font-size: .8rem; text-transform: uppercase; letter-spacing: .3em; color: var(--text); }
+    .hero-meta { margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 6px 28px; font-family: var(--sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); }
 
     /* ---------- sections ---------- */
     .wrap { width: 100%; padding: 0 var(--gutter); }
@@ -68,13 +68,23 @@
     #about p { color: #cfccc6; font-size: 1.3rem; }
 
     /* ---------- showreel ---------- */
-    .reel { position: relative; border: 1px solid #3a3835; background: #000; box-shadow: 8px 8px 0 var(--accent); width: 75%; max-width: 960px; margin: 0 auto; }
-    .reel iframe { display: block; filter: grayscale(1) brightness(.6) contrast(1.15); transition: filter .3s steps(3); }
-    .play { position: absolute; top: 50%; left: 50%; z-index: 4; width: 96px; height: 96px; margin: -48px 0 0 -48px; padding: 0; cursor: pointer; background: #0b0b0b; border: 2px solid var(--accent); box-shadow: 6px 6px 0 var(--accent); display: grid; place-items: center; transition: transform .12s steps(2), box-shadow .12s steps(2), opacity .3s steps(3); }
-    .play svg { width: 40px; height: 56px; fill: var(--accent); shape-rendering: crispEdges; }
-    .play:hover { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--accent); }
-    .play:hover svg { fill: var(--text); }
-    .play:focus-visible { outline: 1px solid #fff; outline-offset: 4px; }
+    .reel { position: relative; border: 1px solid #3a3835; background: #000; width: 75%; max-width: 960px; margin: 0 auto; }
+    .reel iframe { display: block; filter: grayscale(1) brightness(.6) contrast(1.15); transition: filter .3s ease; }
+    .play {
+      position: absolute; top: 50%; left: 50%; z-index: 4;
+      width: 92px; height: 92px; margin: -58px 0 0 -46px; padding: 0; cursor: pointer;
+      background: rgba(11,11,11,.35); border: 1px solid var(--text); border-radius: 50%;
+      display: grid; place-items: center; color: var(--text);
+      transition: background .25s, border-color .25s, transform .25s, opacity .3s;
+    }
+    .play svg { width: 26px; height: 30px; margin-left: 5px; fill: var(--accent); transition: fill .25s; }
+    .play::after {
+      content: "Play showreel"; position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%);
+      white-space: nowrap; font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .26em; color: var(--text);
+    }
+    .play:hover { background: var(--accent); border-color: var(--accent); transform: scale(1.06); }
+    .play:hover svg { fill: #fff; }
+    .play:focus-visible { outline: 1px solid #fff; outline-offset: 6px; }
     .reel.playing .play { opacity: 0; pointer-events: none; }
     .reel.playing iframe { filter: none; }
 
@@ -83,7 +93,7 @@
     .timeline li { display: grid; grid-template-columns: clamp(130px, 10vw, 170px) minmax(0, 1fr); gap: 6px 20px; padding: 26px 0; border-top: 1px solid var(--line); }
     .date { font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .18em; color: var(--muted); padding-top: .55rem; }
     .role { font-family: var(--serif); font-size: 1.7rem; line-height: 1.1; }
-    .role::before { content: ""; display: inline-block; width: 7px; height: 7px; background: transparent; border: 1px solid var(--accent); margin-right: 12px; vertical-align: .2em; }
+    .role::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: transparent; border: 1px solid var(--accent); margin-right: 12px; vertical-align: .2em; }
     .timeline li:hover .role::before { background: var(--accent); }
     .co { font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .2em; color: var(--muted); margin-top: 6px; }
     .timeline p { margin: 10px 0 0; font-size: 1.12rem; color: #bdbab4; max-width: 60ch; line-height: 1.4; }
@@ -107,8 +117,8 @@
     .links a:hover { color: var(--accent); padding-left: 10px; }
     .links a:hover span { transform: translateX(6px); }
     .portrait { display: flex; align-items: center; gap: 24px; margin: 0 0 40px; }
-    .portrait .pic { width: clamp(120px, 14vw, 200px); aspect-ratio: 1; flex: none; overflow: hidden; border-radius: 50%; border: 2px solid var(--text); background: #000; box-shadow: 6px 6px 0 var(--accent); }
-    .portrait img { width: 100%; height: 100%; display: block; object-fit: cover; image-rendering: pixelated; }
+    .portrait .pic { width: clamp(120px, 14vw, 200px); aspect-ratio: 1; flex: none; overflow: hidden; border-radius: 50%; border: 1px solid #3a3835; background: #000; }
+    .portrait img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 35%; filter: grayscale(1) contrast(1.05); }
     .portrait figcaption { font-family: var(--sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); line-height: 2; }
     .portrait figcaption b { display: block; color: var(--text); font-weight: 500; font-size: .8rem; }
     .copy { font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); }
@@ -281,11 +291,7 @@
           <div class="reel">
             <div style="padding:54.17% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/888430497?autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mariano Lacerna - reel2025"></iframe></div>
             <button class="play" type="button" aria-label="Play showreel">
-              <svg viewBox="0 0 5 9" aria-hidden="true">
-                <rect x="0" y="0" width="1" height="9"/><rect x="1" y="1" width="1" height="7"/>
-                <rect x="2" y="2" width="1" height="5"/><rect x="3" y="3" width="1" height="3"/>
-                <rect x="4" y="4" width="1" height="1"/>
-              </svg>
+              <svg viewBox="0 0 26 30" aria-hidden="true"><polygon points="0,0 26,15 0,30"/></svg>
             </button>
           </div>
           <script src="https://player.vimeo.com/api/player.js"></script>
@@ -337,7 +343,7 @@
         <a href="https://www.imdb.com/name/nm5569918/">IMDb <span>→</span></a>
       </div>
       <figure class="portrait">
-        <div class="pic"><img src="assets/foto-8bit.png" alt="Portrait of Mariano Lacerna in 8-bit style" width="528" height="528"></div>
+        <div class="pic"><img src="assets/foto.jpg" alt="Portrait of Mariano Lacerna" width="400" height="400"></div>
         <figcaption><b>Mariano Lacerna</b>Senior VFX Compositor<br>Mendoza, AR</figcaption>
       </figure>
       <div class="copy">© 2026 Mariano Lacerna · Mendoza, AR</div>
