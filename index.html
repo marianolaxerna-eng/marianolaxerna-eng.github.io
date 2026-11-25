@@ -21,7 +21,7 @@
       --font-mono: "Space Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; font-size: clamp(16px, .55vw + 9.4px, 22px); }
     body {
       margin: 0;
       background-color: var(--bg);
@@ -36,7 +36,8 @@
     a { color: inherit; }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-    .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+    :root { --gutter: clamp(20px, 4vw, 72px); --ok: #39ff6a; }
+    .container { width: 100%; max-width: none; margin: 0; padding: 0 var(--gutter); }
 
     /* ---------- top bar ---------- */
     .topbar {
@@ -65,10 +66,10 @@
       font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase;
       letter-spacing: .1em; color: var(--muted); margin-bottom: 28px;
     }
-    .status i { width: 8px; height: 8px; background: var(--accent); display: inline-block; animation: blink 1.4s steps(2) infinite; }
+    .status i { width: 8px; height: 8px; background: var(--ok); box-shadow: 0 0 8px var(--ok); display: inline-block; animation: blink 1.4s steps(2) infinite; }
     .hero h1 {
       margin: 0; font-family: var(--font-dot); font-weight: 900;
-      font-size: clamp(3rem, 12vw, 7.5rem); line-height: .95; letter-spacing: -.01em;
+      font-size: clamp(3rem, 11vw, 10rem); line-height: .95; letter-spacing: -.01em;
     }
     .tagline {
       margin: 24px 0 0; font-family: var(--font-mono);
@@ -82,7 +83,11 @@
 
     /* ---------- sections ---------- */
     section { padding: 72px 0 8px; }
-    .row { display: grid; grid-template-columns: 200px 1fr; gap: 24px 48px; }
+    .wrap {
+      width: 100%; padding: 0 var(--gutter);
+      display: grid; grid-template-columns: minmax(0, 1fr); column-gap: clamp(32px, 5vw, 96px);
+    }
+    .row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
     .label {
       font-family: var(--font-mono); font-size: .78rem; text-transform: uppercase;
       letter-spacing: .1em; color: var(--muted); padding-top: 6px;
@@ -93,6 +98,7 @@
       font-size: clamp(1.8rem, 4vw, 2.6rem); line-height: 1.1;
     }
     p { margin: 0 0 16px; max-width: 62ch; }
+    .row > div { min-width: 0; }
     #about p { color: #cfcfcf; }
 
     /* ---------- pixel button ---------- */
@@ -105,7 +111,7 @@
     }
     .btn:hover { transform: translate(4px, 4px); box-shadow: 2px 2px 0 var(--accent); }
 
-    .reel { border: 2px solid var(--text); background: #000; box-shadow: 8px 8px 0 var(--accent); max-width: 720px; }
+    .reel { border: 2px solid var(--text); background: #000; box-shadow: 8px 8px 0 var(--accent); max-width: 100%; }
     .reel { position: relative; }
     .reel iframe { display: block; filter: grayscale(1) brightness(.6) contrast(1.15); transition: filter .3s steps(3); }
     /* retro pixel play button */
@@ -127,19 +133,20 @@
     /* ---------- career ---------- */
     .timeline { list-style: none; margin: 0; padding: 0; }
     .timeline li {
-      display: grid; grid-template-columns: 150px 1fr; gap: 8px 24px;
-      padding: 20px 0; border-top: 1px solid var(--line);
+      display: grid; grid-template-columns: clamp(150px, 14vw, 240px) minmax(0, 1fr); gap: 8px 24px;
+      padding: 26px 0; border-top: 1px solid var(--line);
     }
     .timeline li:last-child { border-bottom: 1px solid var(--line); }
     .timeline li:hover .role::before { background: var(--accent); }
     .date { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); padding-top: 3px; }
-    .role { font-weight: 500; font-size: 1.05rem; }
+    .role { font-weight: 500; font-size: 1.3rem; }
     .role::before {
       content: ""; display: inline-block; width: 8px; height: 8px;
       background: transparent; border: 2px solid var(--accent); margin-right: 10px;
     }
-    .co { font-family: var(--font-mono); font-size: .85rem; color: var(--muted); margin-top: 2px; }
-    .timeline p { margin: 8px 0 0; font-size: .95rem; color: #bdbdbd; }
+    .co { font-family: var(--font-mono); font-size: .95rem; color: var(--muted); margin-top: 2px; }
+    .timeline p { margin: 8px 0 0; font-size: 1.02rem; color: #bdbdbd; max-width: 80ch; }
+    #career h2 { font-size: clamp(2.2rem, 5vw, 4rem); }
 
     /* ---------- skills ---------- */
     .skills { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0 0 28px; padding: 0; }
@@ -153,7 +160,7 @@
     .facts strong { font-family: var(--font-mono); font-weight: 400; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; margin-right: 8px; }
 
     /* ---------- footer ---------- */
-    footer { margin-top: 80px; border-top: 1px solid var(--line); padding: 64px 0 40px; }
+    footer { margin-top: 80px; width: 100%; border-top: 1px solid var(--line); padding: 64px 0 40px; }
     .contact-title { font-family: var(--font-dot); font-weight: 900; font-size: clamp(2rem, 6vw, 3.6rem); line-height: 1.05; margin: 0 0 32px; }
     .links { display: flex; flex-direction: column; margin-bottom: 56px; }
     .links a {
@@ -179,9 +186,17 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
 
+    /* wide screens: side column (about, showreel, skills) + dominant career column */
+    @media (min-width: 1000px) {
+      .wrap { grid-template-columns: minmax(300px, 4fr) minmax(0, 7fr); }
+      #about { grid-column: 1; grid-row: 1; }
+      #showreel { grid-column: 1; grid-row: 2; }
+      #skills { grid-column: 1; grid-row: 3; }
+      #career { grid-column: 2; grid-row: 1 / span 3; }
+    }
+
     /* ---------- responsive ---------- */
     @media (max-width: 720px) {
-      .row { grid-template-columns: 1fr; gap: 8px; }
       .timeline li { grid-template-columns: 1fr; gap: 4px; }
       .hero { padding: 64px 0 48px; }
       .topbar .container { padding-top: 8px; padding-bottom: 8px; flex-direction: column; align-items: flex-start; gap: 4px; }
@@ -216,7 +231,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="wrap">
 
     <section id="about">
       <div class="row">
