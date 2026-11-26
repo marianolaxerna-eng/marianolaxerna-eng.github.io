@@ -1,0 +1,83 @@
+:root {
+  --font-titulo: "Duermevela Condensed", Georgia, serif;
+  --font-pixel: "Fusion Pixel", monospace;
+  --font-texto: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Modo oscuro (base) */
+  color-scheme: dark;
+  --fondo: #221e1e;
+  --bloque: #2b2727;
+  --texto: #faf8f2;
+  --texto-suave: #faf8f2;
+  --titulo: #98c1bb;
+  --titulo-bloque: #faf8f2;
+  --boton-fondo: #98c1bb;
+  --boton-texto: #221e1e;
+  --hover-fondo: #ddd1b3;
+  --hover-borde: #ddd1b3;
+  --hover-texto: #221e1e;
+  --precio-texto: #faf8f2;
+  --precio-fondo: transparent;
+  --precio-margen: 0;
+  --nav-hover-texto: #98c1bb;
+  --nav-hover-fondo: transparent;
+  --etiqueta-fondo: #faf8f2;
+  --etiqueta-texto: #221e1e;
+  --etiqueta-suave: #524c49;
+}
+
+/* Modo claro según el sistema */
+@media (prefers-color-scheme: light) {
+  :root:not([data-modo="oscuro"]) {
+    color-scheme: light;
+    --fondo: #faf8f2;
+    --bloque: #ece9e3;
+    --texto: #2b2626;
+    --texto-suave: #433d3b;
+    --titulo: #2b2626;
+    --titulo-bloque: #2b2626;
+    --boton-fondo: #2b2626;
+    --boton-texto: #98c1bb;
+    --hover-fondo: #98c1bb;
+    --hover-borde: #2b2626;
+    --hover-texto: #2b2626;
+    --precio-texto: #2b2626;
+    --precio-fondo: #98c1bb;
+    --precio-margen: 6px;
+    --nav-hover-texto: #2b2626;
+    --nav-hover-fondo: #98c1bb;
+    --etiqueta-fondo: #2b2626;
+    --etiqueta-texto: #ddd1b3;
+    --etiqueta-suave: #b0ac9c;
+  }
+}
+
+/* Modo claro forzado */
+:root[data-modo="claro"] {
+  color-scheme: light;
+  --fondo: #faf8f2;
+  --bloque: #ece9e3;
+  --texto: #2b2626;
+  --texto-suave: #433d3b;
+  --titulo: #2b2626;
+  --titulo-bloque: #2b2626;
+  --boton-fondo: #2b2626;
+  --boton-texto: #98c1bb;
+  --hover-fondo: #98c1bb;
+  --hover-borde: #2b2626;
+  --hover-texto: #2b2626;
+  --precio-texto: #2b2626;
+  --precio-fondo: #98c1bb;
+  --precio-margen: 6px;
+  --nav-hover-texto: #2b2626;
+  --nav-hover-fondo: #98c1bb;
+  --etiqueta-fondo: #2b2626;
+  --etiqueta-texto: #ddd1b3;
+  --etiqueta-suave: #b0ac9c;
+}
+
+/* accent of this version, used for the logo and light mode colour */
+:root { --acento: #98c1bb; }
+
+/* dark mode: near black */
+:root { --fondo: #0a0909; --bloque: #161414; }
