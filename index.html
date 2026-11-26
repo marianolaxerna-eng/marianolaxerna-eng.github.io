@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mariano Lacerna – VFX Compositor</title>
+  <title>Mariano Lacerna 2026 – VFX Compositor</title>
   <meta name="description" content="Personal website of Mariano Lacerna, Senior VFX Compositor with 11+ years of experience in feature films, TV shows, commercials and video games.">
-  <meta name="theme-color" content="#0b0b0b">
-  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <meta name="theme-color" content="#001a4d">
+  <script>try{var t=localStorage.getItem("boca-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0b0b0b;
@@ -175,6 +175,92 @@
       nav { gap: 4px 18px; }
       .nav-right { gap: 8px 18px; }
     }
+
+    /* ========== BOCA THEME (Pantone 287 C + 7409 C) ========== */
+    @font-face {
+      font-family: "Boca 2026";
+      src: url("assets/Boca_Juniors_Font-2026-2027.ttf") format("truetype");
+      font-display: swap;
+    }
+    :root {
+      --blue: #003087; --gold: #f0b323;
+      --bg: #001a4d; --text: #ffffff; --text-2: #ffffff; --text-3: #ffffff;
+      --muted: #b9c6e4; --line: #12336f; --border: #2b4e92; --accent: #f0b323;
+      --serif: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --display: "Boca 2026", "Jost", Impact, sans-serif;
+    }
+    /* light mode = application over yellow */
+    [data-theme="light"] {
+      --bg: #f0b323; --text: #002366; --text-2: #002366; --text-3: #002366;
+      --muted: #1d3a75; --line: #c89212; --border: #003087; --accent: #003087;
+    }
+    body { font-size: 1.02rem; line-height: 1.65; }
+    ::selection { background: var(--gold); color: var(--blue); }
+
+    .logo, h2, .hero h1, .contact-title { font-family: var(--display); font-weight: 400; letter-spacing: .01em; }
+    .logo span { font-style: normal; }
+
+    /* hero: blue field crossed by the gold band */
+    .hero { background: var(--blue); border-bottom: clamp(18px, 3vw, 40px) solid var(--gold); color: #fff; }
+    .hero h1 { line-height: 1; letter-spacing: 0; }
+    .hero h1 em { display: inline; font-style: normal; color: var(--gold); }
+    .hero h1 .year { display: block; color: #fff; }
+    .hero h1 .mitad { color: var(--gold); margin-left: .15em; }
+    .hero .status, .hero .hero-meta { color: #fff; }
+    .hero .tagline { color: var(--gold); }
+    [data-theme="light"] .hero { border-bottom-color: #fff; }
+
+    h2 { line-height: 1.1; }
+    h2::after { content: ""; display: block; width: 72px; height: 8px; margin-top: 12px; background: var(--accent); }
+    #about p { font-size: 1.1rem; }
+    .role { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; }
+    .role::before { background: var(--accent); }
+    .co { color: var(--accent); }
+    .timeline p { font-size: .98rem; }
+    .skills li { border-color: var(--accent); }
+    .facts { font-size: 1rem; }
+    .play { background: rgba(0, 48, 135, .7); border: 2px solid var(--gold); color: #fff; }
+    .play svg { fill: var(--gold); }
+    .play::after { color: #fff; }
+    .play:hover { background: var(--gold); border-color: var(--gold); }
+    .play:hover svg { fill: var(--blue); }
+    .play:hover::after { color: #fff; }
+    .reel { border: 3px solid var(--gold); }
+    .contact-title { line-height: 1.1; }
+    .contact-title em { font-style: normal; }
+    .links a { font-size: clamp(1.1rem, 2.2vw, 1.6rem); }
+    .portrait .pic { border: 4px solid var(--gold); }
+
+    /* ========== BOCA LIGHT MODE: white base, blue + black type, gold details ========== */
+    @font-face {
+      font-family: "Jamaica Away 26";
+      src: url("assets/Jamaica_Away_26.ttf") format("truetype");
+      font-display: swap;
+    }
+    [data-theme="light"] {
+      --bg: #ffffff; --text: #0a0a0a; --text-2: #0a0a0a; --text-3: #1c1c1c;
+      --muted: #003087; --line: #dfe3ec; --border: #003087; --accent: #003087;
+      --display: "Jamaica Away 26", "Jost", Impact, sans-serif;
+    }
+    [data-theme="light"] body::after { display: none; }
+    [data-theme="light"] .hero { background: #fff; color: var(--text); border-bottom-color: var(--gold); }
+    [data-theme="light"] .hero h1 { color: var(--blue); }
+    [data-theme="light"] .hero h1 em { color: #0a0a0a; }
+    [data-theme="light"] .hero h1 .year { color: var(--blue); }
+    [data-theme="light"] .hero h1 .mitad { color: var(--gold); }
+    [data-theme="light"] .hero .status { color: var(--blue); }
+    [data-theme="light"] .hero .tagline { color: #0a0a0a; }
+    [data-theme="light"] .hero .hero-meta { color: var(--blue); }
+    [data-theme="light"] .logo, [data-theme="light"] h2, [data-theme="light"] .role { color: var(--blue); }
+    [data-theme="light"] .contact-title em { color: #0a0a0a; }
+    /* gold details */
+    [data-theme="light"] .logo span { color: var(--gold); }
+    [data-theme="light"] h2::after, [data-theme="light"] .role::before { background: var(--gold); }
+    [data-theme="light"] .role::before { border-color: var(--gold); }
+    [data-theme="light"] .skills li { border-color: var(--blue); box-shadow: inset 0 -3px 0 var(--gold); }
+    [data-theme="light"] .links a span { color: var(--gold); }
+    [data-theme="light"] .label b { background: var(--gold); color: var(--blue); padding: 0 6px; }
+    [data-theme="light"] .play:hover::after { color: #fff; }
   </style>
 </head>
 <body>
@@ -198,7 +284,7 @@
   <header class="hero" id="top">
     <div class="container">
       <div class="status"><i></i> Open to new challenges</div>
-      <h1>Mariano<em>Lacerna</em></h1>
+      <h1>Mariano <em>Lacerna</em><span class="year">2026 <span class="mitad">La mitad + 1</span></span></h1>
       <p class="tagline">Senior VFX Compositor</p>
       <div class="hero-meta">
         <span>Mendoza, AR</span>
@@ -393,13 +479,13 @@
         var light = theme === 'light';
         btn.querySelector('span').textContent = light ? 'Dark' : 'Light';
         btn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
-        if (meta) meta.setAttribute('content', light ? '#ece9e4' : '#0b0b0b');
+        if (meta) meta.setAttribute('content', light ? '#ffffff' : '#001a4d');
       }
       apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
       btn.addEventListener('click', function () {
         var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
         apply(next);
-        try { localStorage.setItem('theme', next); } catch (e) {}
+        try { localStorage.setItem('boca-theme', next); } catch (e) {}
       });
     })();
   </script>
