@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "id": "index",
+  "name": "version index - editorial",
+  "page": null,
+  "colors": {
+    "dark": {
+      "bg": "#0b0b0b",
+      "text": "#ece9e4",
+      "muted": "#8d8a85",
+      "line": "#242321",
+      "border": "#3a3835",
+      "accent": "#b4463f"
+    },
+    "light": {
+      "bg": "#ece9e4",
+      "text": "#0b0b0b",
+      "muted": "#6f6c67",
+      "line": "#cfcbc4",
+      "border": "#b9b5ae",
+      "accent": "#a63d36"
+    }
+  },
+  "roles": {
+    "dark": {
+      "title": "Instrument Serif",
+      "ui": "Jost",
+      "text": "Instrument Serif"
+    },
+    "light": {
+      "title": "Instrument Serif",
+      "ui": "Jost",
+      "text": "Instrument Serif"
+    }
+  },
+  "fonts": [
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/instrument-serif-latin-400-normal.woff2"
+    },
+    {
+      "family": "Instrument Serif",
+      "weight": 400,
+      "style": "italic",
+      "file": "fonts/instrument-serif-latin-400-italic.woff2"
+    },
+    {
+      "family": "Jost",
+      "weight": 300,
+      "style": "normal",
+      "file": "fonts/jost-latin-300-normal.woff2"
+    },
+    {
+      "family": "Jost",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/jost-latin-400-normal.woff2"
+    },
+    {
+      "family": "Jost",
+      "weight": 500,
+      "style": "normal",
+      "file": "fonts/jost-latin-500-normal.woff2"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "main": "v1",
+  "looks": [
+    {
+      "id": "v1",
+      "name": "v1 - plum and lime",
+      "path": "v1/look.json"
+    },
+    {
+      "id": "v2",
+      "name": "v2 - charcoal and celeste",
+      "path": "v2/look.json"
+    },
+    {
+      "id": "boca",
+      "name": "Boca",
+      "path": "boca/look.json"
+    },
+    {
+      "id": "index",
+      "name": "version index - editorial",
+      "path": "index/look.json"
+    },
+    {
+      "id": "8bit",
+      "name": "8bitLook",
+      "path": "8bit/look.json"
+    }
+  ]
+}

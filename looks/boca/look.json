@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "id": "boca",
+  "name": "Boca",
+  "page": "boca_theme.html",
+  "colors": {
+    "dark": {
+      "bg": "#001a4d",
+      "text": "#ffffff",
+      "muted": "#b9c6e4",
+      "line": "#12336f",
+      "border": "#2b4e92",
+      "accent": "#f0b323"
+    },
+    "light": {
+      "bg": "#ffffff",
+      "text": "#0a0a0a",
+      "muted": "#003087",
+      "line": "#dfe3ec",
+      "border": "#003087",
+      "accent": "#003087"
+    }
+  },
+  "roles": {
+    "dark": {
+      "title": "Boca 2026",
+      "ui": "Jost",
+      "text": "Jost"
+    },
+    "light": {
+      "title": "Jamaica Away 26",
+      "ui": "Jost",
+      "text": "Jost"
+    }
+  },
+  "fonts": [
+    {
+      "family": "Boca 2026",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/Boca_Juniors_Font-2026-2027.ttf"
+    },
+    {
+      "family": "Jamaica Away 26",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/Jamaica_Away_26.ttf"
+    },
+    {
+      "family": "Jost",
+      "weight": 300,
+      "style": "normal",
+      "file": "fonts/jost-latin-300-normal.woff2"
+    },
+    {
+      "family": "Jost",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/jost-latin-400-normal.woff2"
+    },
+    {
+      "family": "Jost",
+      "weight": 500,
+      "style": "normal",
+      "file": "fonts/jost-latin-500-normal.woff2"
+    }
+  ]
+}

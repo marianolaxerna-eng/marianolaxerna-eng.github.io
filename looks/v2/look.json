@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "id": "v2",
+  "name": "v2 - charcoal and celeste",
+  "page": "v2.html",
+  "colors": {
+    "dark": {
+      "bg": "#0a0909",
+      "text": "#faf8f2",
+      "muted": "#faf8f2",
+      "line": "#161414",
+      "border": "#161414",
+      "accent": "#98c1bb",
+      "block": "#161414",
+      "title": "#98c1bb",
+      "buttonBg": "#98c1bb",
+      "buttonText": "#221e1e",
+      "hoverBg": "#ddd1b3",
+      "hoverText": "#221e1e"
+    },
+    "light": {
+      "bg": "#faf8f2",
+      "text": "#2b2626",
+      "muted": "#433d3b",
+      "line": "#ece9e3",
+      "border": "#ece9e3",
+      "accent": "#98c1bb",
+      "block": "#ece9e3",
+      "title": "#2b2626",
+      "buttonBg": "#2b2626",
+      "buttonText": "#98c1bb",
+      "hoverBg": "#98c1bb",
+      "hoverText": "#2b2626"
+    }
+  },
+  "roles": {
+    "dark": {
+      "title": "Duermevela Condensed",
+      "ui": "Fusion Pixel",
+      "text": "IBM Plex Mono"
+    },
+    "light": {
+      "title": "Duermevela Condensed",
+      "ui": "Fusion Pixel",
+      "text": "IBM Plex Mono"
+    }
+  },
+  "fonts": [
+    {
+      "family": "Duermevela Condensed",
+      "weight": 700,
+      "style": "normal",
+      "file": "fonts/duermevela-condensed.woff2"
+    },
+    {
+      "family": "Fusion Pixel",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/fusion-pixel-12px-proportional-sc-latin-400-normal.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/ibm-plex-mono-latin-400-normal.woff2"
+    },
+    {
+      "family": "IBM Plex Mono",
+      "weight": 700,
+      "style": "normal",
+      "file": "fonts/ibm-plex-mono-latin-700-normal.woff2"
+    }
+  ]
+}

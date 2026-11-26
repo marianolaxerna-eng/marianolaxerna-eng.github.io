@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "id": "8bit",
+  "name": "8bitLook",
+  "page": null,
+  "colors": {
+    "dark": {
+      "bg": "#0a0a0a",
+      "text": "#f2f2f2",
+      "muted": "#8a8a8a",
+      "line": "#222222",
+      "accent": "#ff3b30"
+    }
+  },
+  "roles": {
+    "dark": {
+      "title": "Doto",
+      "ui": "Space Mono",
+      "text": "Space Grotesk"
+    },
+    "light": {
+      "title": "Doto",
+      "ui": "Space Mono",
+      "text": "Space Grotesk"
+    }
+  },
+  "fonts": [
+    {
+      "family": "Doto",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/doto-latin-400-normal.woff2"
+    },
+    {
+      "family": "Doto",
+      "weight": 700,
+      "style": "normal",
+      "file": "fonts/doto-latin-700-normal.woff2"
+    },
+    {
+      "family": "Doto",
+      "weight": 900,
+      "style": "normal",
+      "file": "fonts/doto-latin-900-normal.woff2"
+    },
+    {
+      "family": "Space Grotesk",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/space-grotesk-latin-400-normal.woff2"
+    },
+    {
+      "family": "Space Grotesk",
+      "weight": 500,
+      "style": "normal",
+      "file": "fonts/space-grotesk-latin-500-normal.woff2"
+    },
+    {
+      "family": "Space Grotesk",
+      "weight": 600,
+      "style": "normal",
+      "file": "fonts/space-grotesk-latin-600-normal.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "weight": 400,
+      "style": "normal",
+      "file": "fonts/space-mono-latin-400-normal.woff2"
+    },
+    {
+      "family": "Space Mono",
+      "weight": 700,
+      "style": "normal",
+      "file": "fonts/space-mono-latin-700-normal.woff2"
+    }
+  ]
+}
