@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mariano Lacerna 2026 – VFX Compositor</title>
+  <meta name="description" content="Personal website of Mariano Lacerna, Senior VFX Compositor with 11+ years of experience in feature films, TV shows, commercials and video games.">
+  <meta name="theme-color" content="#001a4d">
+  <script>try{var t=localStorage.getItem("boca-theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --text: #ece9e4;
+      --text-2: #cfccc6;
+      --text-3: #bdbab4;
+      --muted: #8d8a85;
+      --line: #242321;
+      --border: #3a3835;
+      --accent: #b4463f;      /* desaturated red */
+      --ok: #3fbf6a;
+      --gutter: clamp(20px, 4vw, 72px);
+      --serif: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
+      --sans: "Jost", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    /* light mode: inverted palette */
+    [data-theme="light"] {
+      --bg: #ece9e4;
+      --text: #0b0b0b;
+      --text-2: #2a2927;
+      --text-3: #4a4844;
+      --muted: #6f6c67;
+      --line: #cfcbc4;
+      --border: #b9b5ae;
+      --accent: #a63d36;
+      color-scheme: light;
+    }
+    [data-theme="light"] body::after { filter: invert(1); }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: clamp(16px, .55vw + 9.4px, 22px); }
+    body {
+      transition: background-color .3s, color .3s;
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: var(--serif); font-size: 1.2rem; line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* film grain */
+    body::after {
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: .07;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+    ::selection { background: var(--accent); color: #fff; }
+    a { color: inherit; }
+    :focus-visible { outline: 1px solid var(--text); outline-offset: 4px; }
+    .container { width: 100%; padding: 0 var(--gutter); }
+
+    /* ---------- top bar ---------- */
+    .topbar { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+    .topbar .container { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 56px; }
+    .logo { font-family: var(--serif); font-size: 1.7rem; text-decoration: none; line-height: 1; }
+    .logo span { color: var(--accent); font-style: italic; }
+    nav { display: flex; flex-wrap: wrap; gap: 4px 28px; }
+    nav a { font-family: var(--sans); font-size: .72rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); text-decoration: none; padding: 4px 0; transition: color .2s; }
+    nav a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+    .theme-toggle {
+      font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .22em;
+      color: var(--text); background: transparent; border: 1px solid var(--border);
+      padding: 7px 14px; cursor: pointer; display: inline-flex; align-items: center; gap: 10px;
+      transition: border-color .2s, background .2s, color .2s;
+    }
+    .theme-toggle:hover { border-color: var(--text); }
+    .theme-toggle i { width: 9px; height: 9px; border-radius: 50%; border: 1px solid var(--text); background: var(--text); display: inline-block; }
+    [data-theme="light"] .theme-toggle i { background: transparent; }
+
+    /* ---------- hero ---------- */
+    .hero { padding: clamp(40px, 6vw, 80px) 0 clamp(32px, 4vw, 56px); border-bottom: 1px solid var(--line); text-align: left; }
+    .status { display: inline-flex; align-items: center; gap: 12px; font-family: var(--sans); font-size: .72rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); margin-bottom: 36px; }
+    .status i { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 10px var(--ok); animation: blink 1.6s ease-in-out infinite; }
+    .hero h1 { margin: 0; font-family: var(--serif); font-weight: 400; font-size: clamp(2.7rem, 9.75vw, 9rem); line-height: .9; letter-spacing: -.02em; }
+    .hero h1 em { display: block; font-style: italic; color: var(--accent); }
+    .tagline { margin: 36px 0 0; max-width: none; font-family: var(--sans); font-size: .8rem; text-transform: uppercase; letter-spacing: .3em; color: var(--text); }
+    .hero-meta { margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 6px 28px; font-family: var(--sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); }
+
+    /* ---------- sections ---------- */
+    .wrap { width: 100%; padding: 0 var(--gutter); }
+    section { padding: clamp(24px, 3vw, 44px) 0 4px; }
+    .row { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .row > div { min-width: 0; }
+    .label { font-family: var(--sans); font-size: .72rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); }
+    .label b { color: var(--accent); font-weight: 500; margin-right: 10px; }
+    h2 { margin: 0 0 28px; font-family: var(--serif); font-weight: 400; font-size: clamp(2.4rem, 5.4vw, 4.6rem); line-height: 1; letter-spacing: -.01em; }
+    p { margin: 0 0 16px; max-width: 58ch; }
+    #about p { color: var(--text-2); font-size: 1.3rem; max-width: none; }
+
+    /* ---------- showreel ---------- */
+    .reel { position: relative; border: 1px solid var(--border); background: #000; width: 75%; max-width: 960px; margin: 0 auto; }
+    .reel iframe { display: block; filter: grayscale(1) brightness(.6) contrast(1.15); transition: filter .3s ease; }
+    .play {
+      position: absolute; top: 50%; left: 50%; z-index: 4;
+      width: 92px; height: 92px; margin: -58px 0 0 -46px; padding: 0; cursor: pointer;
+      background: color-mix(in srgb, var(--bg) 35%, transparent); border: 1px solid var(--text); border-radius: 50%;
+      display: grid; place-items: center; color: var(--text);
+      transition: background .25s, border-color .25s, transform .25s, opacity .3s;
+    }
+    .play svg { width: 26px; height: 30px; margin-left: 5px; fill: var(--accent); transition: fill .25s; }
+    .play::after {
+      content: "Play showreel"; position: absolute; top: calc(100% + 18px); left: 50%; transform: translateX(-50%);
+      white-space: nowrap; font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .26em; color: var(--text);
+    }
+    .play:hover { background: var(--accent); border-color: var(--accent); transform: scale(1.06); }
+    .play:hover svg { fill: #fff; }
+    .play:hover::after { color: var(--text); }
+    .play:focus-visible { outline: 1px solid #fff; outline-offset: 6px; }
+    .reel.playing .play { opacity: 0; pointer-events: none; }
+    .reel.playing iframe { filter: none; }
+
+    /* ---------- career ---------- */
+    .timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: clamp(32px, 5vw, 96px); border-bottom: 1px solid var(--line); }
+    .timeline li { display: grid; grid-template-columns: clamp(130px, 10vw, 170px) minmax(0, 1fr); gap: 6px 20px; padding: 26px 0; border-top: 1px solid var(--line); }
+    .date { font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .18em; color: var(--muted); padding-top: .55rem; }
+    .role { font-family: var(--serif); font-size: 1.7rem; line-height: 1.1; }
+    .role::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: transparent; border: 1px solid var(--accent); margin-right: 12px; vertical-align: .2em; }
+    .timeline li:hover .role::before { background: var(--accent); }
+    .co { font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .2em; color: var(--muted); margin-top: 6px; }
+    .timeline p { margin: 10px 0 0; font-size: 1.12rem; color: var(--text-3); max-width: 60ch; line-height: 1.4; }
+    #career h2 { font-size: clamp(2.8rem, 6.4vw, 5.6rem); }
+
+    /* ---------- skills ---------- */
+    .sub { font-family: var(--sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); margin: 0 0 14px; }
+    .skills { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0 0 30px; padding: 0; }
+    .skills li { font-family: var(--sans); font-size: .72rem; text-transform: uppercase; letter-spacing: .18em; padding: 9px 16px; border: 1px solid var(--border); }
+    .facts { font-size: 1.2rem; }
+    .facts strong { font-family: var(--sans); font-weight: 400; color: var(--muted); font-size: .68rem; text-transform: uppercase; letter-spacing: .22em; margin-right: 14px; }
+
+    /* ---------- footer ---------- */
+    footer { margin-top: clamp(32px, 4vw, 56px); width: 100%; border-top: 1px solid var(--line); padding: clamp(32px, 4vw, 56px) 0 32px; }
+    .contact-title { font-family: var(--serif); font-weight: 400; font-size: clamp(2.8rem, 8vw, 7rem); line-height: .95; letter-spacing: -.02em; margin: 0 0 40px; }
+    .contact-title em { color: var(--accent); }
+    .links { display: flex; flex-direction: column; margin-bottom: 56px; }
+    .links a { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-top: 1px solid var(--line); font-size: clamp(1.4rem, 3vw, 2.2rem); text-decoration: none; transition: color .2s, padding .2s; }
+    .links a:last-child { border-bottom: 1px solid var(--line); }
+    .links a span { font-family: var(--sans); font-size: 1rem; color: var(--accent); transition: transform .2s; }
+    .links a:hover { color: var(--accent); padding-left: 10px; }
+    .links a:hover span { transform: translateX(6px); }
+    .portrait { display: flex; align-items: center; gap: 24px; margin: 0 0 40px; }
+    .portrait .pic { width: clamp(120px, 14vw, 200px); aspect-ratio: 1; flex: none; overflow: hidden; border-radius: 50%; border: 1px solid var(--border); background: #000; }
+    .portrait img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 50% 35%; filter: grayscale(1) contrast(1.05); }
+    .portrait figcaption { font-family: var(--sans); font-size: .7rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); line-height: 2; }
+    .portrait figcaption b { display: block; color: var(--text); font-weight: 500; font-size: .8rem; }
+    .copy { font-family: var(--sans); font-size: .68rem; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); }
+
+    /* ---------- motion ---------- */
+    @keyframes blink { 50% { opacity: .25; } }
+    @keyframes reveal { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    .hero .container > * { animation: reveal .8s ease both; }
+    .hero .container > *:nth-child(2) { animation-delay: .1s; }
+    .hero .container > *:nth-child(3) { animation-delay: .2s; }
+    .hero .container > *:nth-child(4) { animation-delay: .3s; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+
+    /* ---------- responsive ---------- */
+    @media (max-width: 1000px) {
+      .timeline { grid-template-columns: minmax(0, 1fr); }
+      .reel { width: 100%; }
+    }
+    @media (max-width: 720px) {
+      .timeline li { grid-template-columns: 1fr; gap: 4px; }
+      .topbar .container { padding-top: 8px; padding-bottom: 8px; flex-direction: column; align-items: flex-start; gap: 4px; }
+      nav { gap: 4px 18px; }
+      .nav-right { gap: 8px 18px; }
+    }
+
+    /* ========== BOCA THEME (Pantone 287 C + 7409 C) ========== */
+    @font-face {
+      font-family: "Boca 2026";
+      src: url("assets/Boca_Juniors_Font-2026-2027.ttf") format("truetype");
+      font-display: swap;
+    }
+    :root {
+      --blue: #003087; --gold: #f0b323;
+      --bg: #001a4d; --text: #ffffff; --text-2: #ffffff; --text-3: #ffffff;
+      --muted: #b9c6e4; --line: #12336f; --border: #2b4e92; --accent: #f0b323;
+      --serif: "Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --display: "Boca 2026", "Jost", Impact, sans-serif;
+    }
+    /* light mode = application over yellow */
+    [data-theme="light"] {
+      --bg: #f0b323; --text: #002366; --text-2: #002366; --text-3: #002366;
+      --muted: #1d3a75; --line: #c89212; --border: #003087; --accent: #003087;
+    }
+    body { font-size: 1.02rem; line-height: 1.65; }
+    ::selection { background: var(--gold); color: var(--blue); }
+
+    .logo, h2, .hero h1, .contact-title { font-family: var(--display); font-weight: 400; letter-spacing: .01em; }
+    .logo span { font-style: normal; }
+
+    /* hero: blue field crossed by the gold band */
+    .hero { background: var(--blue); border-bottom: clamp(18px, 3vw, 40px) solid var(--gold); color: #fff; }
+    .hero h1 { line-height: 1; letter-spacing: 0; }
+    .hero h1 em { display: inline; font-style: normal; color: var(--gold); }
+    .hero h1 .year { display: block; color: #fff; }
+    .hero h1 .mitad { color: var(--gold); margin-left: .15em; }
+    .hero .status, .hero .hero-meta { color: #fff; }
+    .hero .tagline { color: var(--gold); }
+    [data-theme="light"] .hero { border-bottom-color: #fff; }
+
+    h2 { line-height: 1.1; }
+    h2::after { content: ""; display: block; width: 72px; height: 8px; margin-top: 12px; background: var(--accent); }
+    #about p { font-size: 1.1rem; }
+    .role { font-family: var(--serif); font-weight: 500; font-size: 1.25rem; }
+    .role::before { background: var(--accent); }
+    .co { color: var(--accent); }
+    .timeline p { font-size: .98rem; }
+    .skills li { border-color: var(--accent); }
+    .facts { font-size: 1rem; }
+    .play { background: rgba(0, 48, 135, .7); border: 2px solid var(--gold); color: #fff; }
+    .play svg { fill: var(--gold); }
+    .play::after { color: #fff; }
+    .play:hover { background: var(--gold); border-color: var(--gold); }
+    .play:hover svg { fill: var(--blue); }
+    .play:hover::after { color: #fff; }
+    .reel { border: 3px solid var(--gold); }
+    .contact-title { line-height: 1.1; }
+    .contact-title em { font-style: normal; }
+    .links a { font-size: clamp(1.1rem, 2.2vw, 1.6rem); }
+    .portrait .pic { border: 4px solid var(--gold); }
+
+    /* ========== BOCA LIGHT MODE: white base, blue + black type, gold details ========== */
+    @font-face {
+      font-family: "Jamaica Away 26";
+      src: url("assets/Jamaica_Away_26.ttf") format("truetype");
+      font-display: swap;
+    }
+    [data-theme="light"] {
+      --bg: #ffffff; --text: #0a0a0a; --text-2: #0a0a0a; --text-3: #1c1c1c;
+      --muted: #003087; --line: #dfe3ec; --border: #003087; --accent: #003087;
+      --display: "Jamaica Away 26", "Jost", Impact, sans-serif;
+    }
+    [data-theme="light"] body::after { display: none; }
+    [data-theme="light"] .hero { background: #fff; color: var(--text); border-bottom-color: var(--gold); }
+    [data-theme="light"] .hero h1 { color: var(--blue); }
+    [data-theme="light"] .hero h1 em { color: #0a0a0a; }
+    [data-theme="light"] .hero h1 .year { color: var(--blue); }
+    [data-theme="light"] .hero h1 .mitad { color: var(--gold); }
+    [data-theme="light"] .hero .status { color: var(--blue); }
+    [data-theme="light"] .hero .tagline { color: #0a0a0a; }
+    [data-theme="light"] .hero .hero-meta { color: var(--blue); }
+    [data-theme="light"] .logo, [data-theme="light"] h2, [data-theme="light"] .role { color: var(--blue); }
+    [data-theme="light"] .contact-title em { color: #0a0a0a; }
+    /* gold details */
+    [data-theme="light"] .logo span { color: var(--gold); }
+    [data-theme="light"] h2::after, [data-theme="light"] .role::before { background: var(--gold); }
+    [data-theme="light"] .role::before { border-color: var(--gold); }
+    [data-theme="light"] .skills li { border-color: var(--blue); box-shadow: inset 0 -3px 0 var(--gold); }
+    [data-theme="light"] .links a span { color: var(--gold); }
+    [data-theme="light"] .label b { background: var(--gold); color: var(--blue); padding: 0 6px; }
+    [data-theme="light"] .play:hover::after { color: #fff; }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <a class="logo" href="#top">ML<span>_</span></a>
+      <div class="nav-right">
+        <nav aria-label="Main">
+          <a href="#about">About</a>
+          <a href="#career">Career</a>
+          <a href="#showreel">Showreel</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to light mode"><i></i><span>Light</span></button>
+      </div>
+    </div>
+  </div>
+
+  <header class="hero" id="top">
+    <div class="container">
+      <div class="status"><i></i> Open to new challenges</div>
+      <h1>Mariano <em>Lacerna</em><span class="year">2026 <span class="mitad">La mitad + 1</span></span></h1>
+      <p class="tagline">Senior VFX Compositor</p>
+      <div class="hero-meta">
+        <span>Mendoza, AR</span>
+        <span>11+ years</span>
+        <span>Film · TV · Commercials · Games</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section id="about">
+      <div class="row">
+        <div class="label"><b>01</b>About</div>
+        <div>
+          <h2>About me</h2>
+          <p>
+            I am an Argentinian-Italian Senior Compositor based in Mendoza with 11+ years of
+            experience in VFX compositing, working with skilled professionals in feature films,
+            TV commercials, cinematic video games and TV shows.
+          </p>
+          <p>
+            At work, I always look for the most effective way to achieve objectives with the
+            available tools, and I enjoy collaborating and helping other team members when needed.
+            I am currently looking for new professional challenges where I can develop my skills
+            together with talented teams doing amazing VFX shots.
+          </p>
+          <p>I love travelling, cooking and movies.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="career">
+      <div class="row">
+        <div class="label"><b>02</b>Career</div>
+        <div>
+          <h2>Career summary</h2>
+          <ul class="timeline">
+            <li>
+              <div class="date">Nov 2026 – Present</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Wanka Cine</div></div>
+            </li>
+            <li>
+              <div class="date">Jul 2026 – Oct 2026</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Ollin VFX</div>
+              <p>Feature film The Further Mis-Adventures of Cliff Booth (2026).</p></div>
+            </li>
+            <li>
+              <div class="date">Mar 2026 – Jun 2026</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Wanka Cine</div>
+              <p>TV series Moria (2026).</p></div>
+            </li>
+            <li>
+              <div class="date">Jul 2025 – Mar 2026</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Freelance</div>
+              <p>Feature films including Pacífico (2026), México 86 (2026) and Pepita la Pistolera (2026).</p></div>
+            </li>
+            <li>
+              <div class="date">Feb 2024 – Jun 2025</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Rojo Studio</div>
+              <p>Feature films and TV shows, including (Un)lucky Sisters, Cometierra, The Gringo Hunters and The Message.</p></div>
+            </li>
+            <li>
+              <div class="date">Jul 2023 – Dec 2023</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Framestore</div>
+              <p>Feature film Wolfs.</p></div>
+            </li>
+            <li>
+              <div class="date">Sep 2022 – Jul 2023</div>
+              <div><div class="role">Senior Compositor</div><div class="co">MARZ</div>
+              <p>The Creator, 1923, Ant-Man and the Wasp, Secret Invasion, Beacon 23.</p></div>
+            </li>
+            <li>
+              <div class="date">Apr 2022 – Aug 2022</div>
+              <div><div class="role">Senior Compositor</div><div class="co">Pixomondo</div>
+              <p>See, Extrapolations.</p></div>
+            </li>
+            <li>
+              <div class="date">Aug 2021 – Apr 2022</div>
+              <div><div class="role">Compositing Artist</div><div class="co">Framestore</div>
+              <p>Slumberland, 1899.</p></div>
+            </li>
+            <li>
+              <div class="date">Apr 2021 – Jul 2021</div>
+              <div><div class="role">On-Set VFX Supervisor</div><div class="co">Fabula</div>
+              <p>TV series Señorita 89.</p></div>
+            </li>
+            <li>
+              <div class="date">Oct 2019 – Oct 2020</div>
+              <div><div class="role">Compositing Artist</div><div class="co">Rodeo FX, Montreal</div>
+              <p>Bloodshot, The Boys, Jungle Cruise, WandaVision, Chaos Walking, The Falcon and the Winter Soldier.</p></div>
+            </li>
+            <li>
+              <div class="date">Aug 2018 – Oct 2019</div>
+              <div><div class="role">Compositing Artist</div><div class="co">MPC Film, Montreal</div>
+              <p>Godzilla, King of the Monsters, Dumbo, Aquaman, The one and the only Ivan, Dolittle.</p></div>
+            </li>
+            <li>
+              <div class="date">May 2016 – Jul 2018</div>
+              <div><div class="role">Lead Compositor</div><div class="co">Whiskey Films Co</div>
+              <p>High-end TV commercials and TV series.</p></div>
+            </li>
+            <li>
+              <div class="date">2012 – 2016</div>
+              <div><div class="role">Earlier career</div>
+              <div class="co">Oner VFX · Varsovia Films / Millecento / MiraCine · LASP/NonStop · Gizmo · Nomad VFX</div>
+              <p>
+                Started as a Junior Compositor at Nomad VFX and grew into Senior roles on feature films
+                such as Hands of Stones, Ola Bola and The Mirror of the Others, plus the cinematic
+                video game Elite: Dangerous.
+              </p></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="showreel">
+      <div class="row">
+        <div class="label"><b>03</b>Showreel</div>
+        <div>
+          <h2>Showreel</h2>
+          <div class="reel">
+            <div style="padding:54.17% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/888430497?autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mariano Lacerna - reel2025"></iframe></div>
+            <button class="play" type="button" aria-label="Play showreel">
+              <svg viewBox="0 0 26 30" aria-hidden="true"><polygon points="0,0 26,15 0,30"/></svg>
+            </button>
+          </div>
+          <script src="https://player.vimeo.com/api/player.js"></script>
+          <script>
+            (function () {
+              var reel = document.querySelector('.reel');
+              var frame = reel && reel.querySelector('iframe');
+              if (!frame || !window.Vimeo) return;
+              var player = new Vimeo.Player(frame);
+              var btn = reel.querySelector('.play');
+              btn.addEventListener('click', function () { player.play(); });
+              player.on('play', function () { reel.classList.add('playing'); });
+              player.on('pause', function () { reel.classList.remove('playing'); });
+              player.on('ended', function () { reel.classList.remove('playing'); });
+            })();
+          </script>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="row">
+        <div class="label"><b>04</b>Skills</div>
+        <div>
+          <h2>Skills &amp; Education</h2>
+          <p class="sub">Software</p>
+          <ul class="skills">
+            <li>NukeX</li>
+            <li>Nuke Studio</li>
+            <li>After Effects</li>
+            <li>Mocha Pro</li>
+            <li>PFTrack</li>
+            <li>Linux</li>
+            <li>Claude Code</li>
+          </ul>
+          <p class="facts"><strong>Languages</strong>Spanish, English</p>
+          <p class="facts"><strong>Education</strong>Bachelor's degree in Filmmaking, ENERC (2009–2012)</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="container">
+      <h2 class="contact-title">Let's make<br><em>something great.</em></h2>
+      <div class="links">
+        <a href="mailto:marianolaxerna@gmail.com">marianolaxerna@gmail.com <span>→</span></a>
+        <a href="https://www.linkedin.com/in/marianolacerna">LinkedIn <span>→</span></a>
+        <a href="https://www.imdb.com/name/nm5569918/">IMDb <span>→</span></a>
+      </div>
+      <figure class="portrait">
+        <div class="pic"><img src="assets/foto.jpg" alt="Portrait of Mariano Lacerna" width="400" height="400"></div>
+        <figcaption><b>Mariano Lacerna</b>Senior VFX Compositor<br>Mendoza, AR</figcaption>
+      </figure>
+      <div class="copy">© 2026 Mariano Lacerna · Mendoza, AR</div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var btn = document.getElementById('theme-toggle');
+      var meta = document.querySelector('meta[name="theme-color"]');
+      function apply(theme) {
+        root.setAttribute('data-theme', theme);
+        var light = theme === 'light';
+        btn.querySelector('span').textContent = light ? 'Dark' : 'Light';
+        btn.setAttribute('aria-label', light ? 'Switch to dark mode' : 'Switch to light mode');
+        if (meta) meta.setAttribute('content', light ? '#ffffff' : '#001a4d');
+      }
+      apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+      btn.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        apply(next);
+        try { localStorage.setItem('boca-theme', next); } catch (e) {}
+      });
+    })();
+  </script>
+</body>
+</html>
