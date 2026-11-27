@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "looks"
-MAIN = "v1"
+MAIN = "v2"
 CDN = "https://cdn.jsdelivr.net/npm/@fontsource"
 
 
